@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    table{
+        width:24%;
+        table-layout: fixed;
+    }
+    body{
+       background-color: yellow;
+    }
+    td{
+       padding: 2%;
+       border-collapse: collapse;
+       font-size: 18px;
+       font-family: "times new roman", Courier, monospace;
+    }
+    th, td{
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<table align="center">
+<tr><td>
+<label>Name: </label>  </td><td><input type="text" id="name" value=""></td></tr>
+<tr><td>
+<label>E-mail: </label></td><td><input type="text" id="email" value=""></td></tr>
+<tr><td>
+<label>Mobile: </label></td><td><input type="text" id="mobile" value=""></td></tr>
+<tr><td>
+<label>Gender: </label></td><td><input type="text" id="gender" value=""></td></tr>
+<tr><td>
+<label>Color: </label> </td><td><input type="text" id="color" value=""></td></tr>
+<tr><td colspan="2" align="center">
+<p>Click the button to show the value.</p></td></tr>
+<tr><td colspan="2" align="center">
+<button onclick="validateform()">Show</button>&nbsp;&nbsp;&nbsp;  <button name="redirect" onClick="redirect()">Clear</button><br><br></td></tr>
+<tr><td>
+<label>Name: </label>  </td><td><input type="text" id="dname" value=""><br></td></tr>
+<tr><td>
+<label>E-mail: </label></td><td><input type="text" id="demail" value=""><br></td></tr>
+<tr><td>
+<label>Mobile: </label></td><td><input type="text" id="dmobile" value=""><br></td></tr>
+<tr><td>
+<label>Gender: </label></td><td><input type="text" id="dgender" value=""><br></td></tr>
+<tr><td>
+<label>Color: </label> </td><td><input type="text" id="dcolor" value=""><br></td></tr>
+</table>
+<script>
+function myFunction() {
+  document.getElementById("dname").value = document.getElementById("name").value;
+  document.getElementById("demail").value = document.getElementById("email").value;
+  document.getElementById("dmobile").value = document.getElementById("mobile").value;
+  document.getElementById("dgender").value = document.getElementById("gender").value;
+  document.getElementById("dcolor").value = document.getElementById("color").value;
+}
+function validateform(){  
+  var name=document.getElementById("name").value;  
+  var email=document.getElementById("email").value;
+  var mobile=document.getElementById("mobile").value;
+  var gender=document.getElementById("gender").value;
+  var color=document.getElementById("color").value;
+  var c=" ";
+  var b=" ";
+if (name==null || name==""){  
+  c=c.concat("Name, "); 
+}
+else{
+  var regex = /^[a-zA-Z\s]+$/; 
+  if(regex.test(name) === false) {
+  b=b.concat("Name, ");
+  } 
+}
+if (email==null || email==""){  
+  c=c.concat("Email ID, "); 
+}
+else{
+  var regex = /^\S+@\S+\.\S+$/; 
+    if(regex.test(email) === false) 
+    {
+       b=b.concat("Email ID, "); 
+    }
+}
+if (mobile==null || mobile==""){  
+  c=c.concat("Mobile No, "); 
+}
+else{
+  var regex = /^[1-9]\d{9}$/; 
+    if(regex.test(mobile) === false) 
+    {
+      b=b.concat("Mobile No, ");
+    }  
+}
+if (gender==null || gender==""){  
+  c=c.concat("Gender, "); 
+}
+else{
+  var regex = /^[a-zA-Z\s]+$/; 
+  if(regex.test(gender) === false) {
+  b=b.concat("Gender, ");
+  } 
+}
+if (color==null || color==""){  
+  c=c.concat("Color "); 
+}
+else{
+  var regex = /^[a-zA-Z\s]+$/; 
+  if(regex.test(color) === false) {
+  b=b.concat("Color ");
+  } 
+}
+if(c!=" "){
+  alert(c+"can't be empty");
+  return false;
+}
+else if(b!=" "){
+  alert(b+"not in valid form");
+}
+else{
+  myFunction();
+} 
+} 
+function redirect()
+{
+  location.reload();
+}
+</script>
+</body>
+</html>
